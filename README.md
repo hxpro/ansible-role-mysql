@@ -11,7 +11,7 @@ TODO
 Role Variables
 --------------
 
-TODO
+mysql_datadir: /var/lib/mysql
 
 Dependencies
 ------------

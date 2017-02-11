@@ -1,2 +1,21 @@
 ---
-# tasks file for ansible-role-mysql
+- name: Install mysql57-community-release
+  package: name='https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm' state=installed
+
+- name: Install mysql packages
+  package: name={{ mysql_pkg }} state=latest
+
+- name: Configure datadir
+  ini_file:
+    dest=/etc/my.cnf
+    section=mysqld
+    option=datadir
+    value="{{ mysql_datadir }}"
+  notify: restart mysqld
+
+- name: Initialize datadir
+  command: mysqld --initialize-insecure --user=mysql
+    creates="{{ mysql_datadir }}/auto.cnf"
+
+- name: Start/enable mysql daemon
+  service: name=mysqld state=started enabled=yes

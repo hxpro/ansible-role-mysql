@@ -1,2 +1,4 @@
 ---
-# vars file for ansible-role-mysql
+mysql_pkg:
+  - mysql-community-server
+  - mysql-community-client
