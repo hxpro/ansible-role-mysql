@@ -3,6 +3,10 @@ hxpro.mysql
 
 Install MySQL Server 5.7 Community Edition on CentOS 7
 
+TODO
+----
+http://crashmag.net/change-the-default-mysql-data-directory-with-selinux-enabled
+
 Requirements
 ------------
 
@@ -11,7 +15,8 @@ TODO
 Role Variables
 --------------
 
-mysql_datadir: /var/lib/mysql
+ - mysql_datadir: /var/lib/mysql
+ - mysql_max_allowed_packet: 16M
 
 Dependencies
 ------------

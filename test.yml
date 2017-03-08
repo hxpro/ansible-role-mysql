@@ -22,6 +22,8 @@
 - name: provision role
   hosts: containers
   connection: docker
+  vars:
+    mysql_max_allowed_packet: 250M
   roles:
     - role: "{{ playbook_dir }}"
 

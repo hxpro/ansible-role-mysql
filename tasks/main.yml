@@ -13,6 +13,16 @@
     value="{{ mysql_datadir }}"
   notify: restart mysqld
 
+- name: Configure max allowed packet
+  ini_file:
+    dest=/etc/my.cnf
+    section=mysqld
+    option=max_allowed_packet
+    value="{{ mysql_max_allowed_packet }}"
+  when: mysql_max_allowed_packet is defined
+  notify: restart mysqld
+
+
 - name: Initialize datadir
   command: mysqld --initialize-insecure --user=mysql
     creates="{{ mysql_datadir }}/auto.cnf"
