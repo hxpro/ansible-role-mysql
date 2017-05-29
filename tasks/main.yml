@@ -22,6 +22,14 @@
   when: mysql_max_allowed_packet is defined
   notify: restart mysqld
 
+- name: Server-id
+  ini_file:
+    dest=/etc/my.cnf
+    section=mysqld
+    option=server-id
+    value="{{ mysql_server_id | int }}"
+  when: mysql_server_id is defined
+  notify: restart mysqld
 
 - name: Initialize datadir
   command: mysqld --initialize-insecure --user=mysql

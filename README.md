@@ -17,6 +17,7 @@ Role Variables
 
  - mysql_datadir: /var/lib/mysql
  - mysql_max_allowed_packet: 16M
+ - mysql_server_id: 1
 
 Dependencies
 ------------

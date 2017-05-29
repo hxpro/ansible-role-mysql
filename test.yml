@@ -5,9 +5,9 @@
   connection: local
 
   tasks:
-    - name: Create container centos7
+    - name: Create container mysql57
       docker_container:
-        name: centos7
+        name: mysql57
         image: hxpro/docker-centos
 #        recreate: yes
         privileged: true
@@ -16,14 +16,15 @@
           - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
         state: started
 
-    - name: add centos7 host
-      add_host: name=centos7 groups=containers
+    - name: add mysql57 host
+      add_host: name=mysql57 groups=containers
 
 - name: provision role
   hosts: containers
   connection: docker
   vars:
     mysql_max_allowed_packet: 250M
+    mysql_server_id: 1
   roles:
     - role: "{{ playbook_dir }}"
 
@@ -38,4 +39,4 @@
 #        name: '{{ item }}'
 #        state: absent
 #      with_items:
-#        - centos7
+#        - mysql57
