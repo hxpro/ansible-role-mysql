@@ -3,7 +3,7 @@
   package: name='https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm' state=installed
 
 - name: Install mysql packages
-  package: name={{ mysql_pkg }} state=latest
+  package: name={{ mysql_pkg }} state=installed
 
 - name: Configure datadir
   ini_file:
