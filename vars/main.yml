@@ -3,3 +3,4 @@ mysql_pkg:
   - mysql-community-server
   - mysql-community-client
   - MySQL-python
+  - innotop
