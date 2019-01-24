@@ -14,7 +14,12 @@ TODO
 
 Role Variables
 --------------
+ - mysql_vars:
+     datadir: /var/lib/mysql
+     max_allowed_packet: 16M
+     server_id: 1
 
+This variables are deprecated! Please use mysql_vars instead
  - mysql_datadir: /var/lib/mysql
  - mysql_max_allowed_packet: 16M
  - mysql_server_id: 1
