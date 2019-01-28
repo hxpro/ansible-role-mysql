@@ -1,6 +1,2 @@
 ---
 mysql_datadir: /var/lib/mysql
-mysql_vars:
-  datadir: "{{ mysql_datadir | default('/var/lib/mysql') }}"
-  max_allowed_packet: "{{ mysql_max_allowed_packet | default('16M') }}"
-  server_id: "{{ mysql_server_id | default(1) }}"

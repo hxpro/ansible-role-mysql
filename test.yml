@@ -22,13 +22,11 @@
 - name: provision role
   hosts: containers
   connection: docker
-  vars:
-    mysql_vars:
-      max_allowed_packet: 128M
-      server_id: 1
-      skip-name-resolve:
   roles:
     - role: "{{ playbook_dir }}"
+      mysql_max_allowed_packet: 128M
+      mysql_server_id: 1
+      mysql_skip-name-resolve:
 
 
 #- name: tear down

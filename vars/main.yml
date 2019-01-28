@@ -4,3 +4,55 @@ mysql_pkg:
   - mysql-community-client
   - MySQL-python
   - innotop
+mysql_client_vars:
+  - socket
+mysql_mysqld_vars:
+  - bind-address
+  - binlog_cache_size
+  - binlog_format
+  - concurrent_insert
+  - datadir
+  - expire_logs_days
+  - innodb_buffer_pool_size
+  - innodb_file_per_table
+  - innodb_flush_method
+  - innodb_force_recovery
+  - innodb_log_file_size
+  - innodb_thread_concurrency
+  - join_buffer_size
+  - key_buffer_size
+  - log-bin
+  - log-error
+  - log-slave-updates
+  - long_query_time
+  - low_priority_updates
+  - max_allowed_packet
+  - max_allowed_packet
+  - max_connections
+  - max_heap_table_size
+  - myisam_sort_buffer_size
+  - net_write_timeout
+  - old_passwords
+  - open_files_limit
+  - pid-file
+  - port
+  - query_cache_limit
+  - query_cache_size
+  - query_cache_type
+  - read_buffer_size
+  - read_rnd_buffer_size
+  - server_id
+  - skip-name-resolve
+  - slow_query_log
+  - slow_query_log_file
+  - socket
+  - sort_buffer_size
+  - sql_mode
+  - symbolic-links
+  - sync_binlog
+  - table_open_cache
+  - thread_cache_size
+  - tmpdir
+  - tmp_table_size
+  - transaction-isolation
+  - user

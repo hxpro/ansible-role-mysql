@@ -14,20 +14,60 @@ TODO
 
 Role Variables
 --------------
- - mysql_vars:
-     datadir: /var/lib/mysql
-     max_allowed_packet: 16M
-     server_id: 1
-
-This variables are deprecated! Please use mysql_vars instead
- - mysql_datadir: /var/lib/mysql
- - mysql_max_allowed_packet: 16M
- - mysql_server_id: 1
+  - mysql_bind-address
+  - mysql_binlog_cache_size
+  - mysql_binlog_format
+  - mysql_concurrent_insert
+  - mysql_datadir
+  - mysql_expire_logs_days
+  - mysql_innodb_buffer_pool_size
+  - mysql_innodb_file_per_table
+  - mysql_innodb_flush_method
+  - mysql_innodb_force_recovery
+  - mysql_innodb_log_file_size
+  - mysql_innodb_thread_concurrency
+  - mysql_join_buffer_size
+  - mysql_key_buffer_size
+  - mysql_log-bin
+  - mysql_log-error
+  - mysql_log-slave-updates
+  - mysql_long_query_time
+  - mysql_low_priority_updates
+  - mysql_max_allowed_packet
+  - mysql_max_allowed_packet
+  - mysql_max_connections
+  - mysql_max_heap_table_size
+  - mysql_myisam_sort_buffer_size
+  - mysql_net_write_timeout
+  - mysql_old_passwords
+  - mysql_open_files_limit
+  - mysql_pid-file
+  - mysql_port
+  - mysql_query_cache_limit
+  - mysql_query_cache_size
+  - mysql_query_cache_type
+  - mysql_read_buffer_size
+  - mysql_read_rnd_buffer_size
+  - mysql_server_id
+  - mysql_skip-name-resolve
+  - mysql_slow_query_log
+  - mysql_slow_query_log_file
+  - mysql_socket
+  - mysql_sort_buffer_size
+  - mysql_sql_mode
+  - mysql_symbolic-links
+  - mysql_sync_binlog
+  - mysql_table_open_cache
+  - mysql_thread_cache_size
+  - mysql_tmpdir
+  - mysql_tmp_table_size
+  - mysql_transaction-isolation
+  - mysql_user
 
 Dependencies
 ------------
 
-- hxpro.epel
+ - hxpro.epel
 
 Example Playbook
 ----------------
