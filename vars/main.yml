@@ -7,7 +7,7 @@ mysql_pkg:
 mysql_client_vars:
   - socket
 mysql_mysqld_vars:
-  - bind-address
+  - bind_address
   - binlog_cache_size
   - binlog_format
   - concurrent_insert
@@ -21,9 +21,9 @@ mysql_mysqld_vars:
   - innodb_thread_concurrency
   - join_buffer_size
   - key_buffer_size
-  - log-bin
-  - log-error
-  - log-slave-updates
+  - log_bin
+  - log_error
+  - log_slave_updates
   - long_query_time
   - low_priority_updates
   - max_allowed_packet
@@ -34,7 +34,7 @@ mysql_mysqld_vars:
   - net_write_timeout
   - old_passwords
   - open_files_limit
-  - pid-file
+  - pid_file
   - port
   - query_cache_limit
   - query_cache_size
@@ -42,17 +42,17 @@ mysql_mysqld_vars:
   - read_buffer_size
   - read_rnd_buffer_size
   - server_id
-  - skip-name-resolve
+  - skip_name_resolve
   - slow_query_log
   - slow_query_log_file
   - socket
   - sort_buffer_size
   - sql_mode
-  - symbolic-links
+  - symbolic_links
   - sync_binlog
   - table_open_cache
   - thread_cache_size
   - tmpdir
   - tmp_table_size
-  - transaction-isolation
+  - transaction_isolation
   - user

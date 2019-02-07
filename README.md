@@ -14,7 +14,7 @@ TODO
 
 Role Variables
 --------------
-  - mysql_bind-address
+  - mysql_bind_address
   - mysql_binlog_cache_size
   - mysql_binlog_format
   - mysql_concurrent_insert
@@ -28,9 +28,9 @@ Role Variables
   - mysql_innodb_thread_concurrency
   - mysql_join_buffer_size
   - mysql_key_buffer_size
-  - mysql_log-bin
-  - mysql_log-error
-  - mysql_log-slave-updates
+  - mysql_log_bin
+  - mysql_log_error
+  - mysql_log_slave_updates
   - mysql_long_query_time
   - mysql_low_priority_updates
   - mysql_max_allowed_packet
@@ -41,7 +41,7 @@ Role Variables
   - mysql_net_write_timeout
   - mysql_old_passwords
   - mysql_open_files_limit
-  - mysql_pid-file
+  - mysql_pid_file
   - mysql_port
   - mysql_query_cache_limit
   - mysql_query_cache_size
@@ -49,19 +49,19 @@ Role Variables
   - mysql_read_buffer_size
   - mysql_read_rnd_buffer_size
   - mysql_server_id
-  - mysql_skip-name-resolve
+  - mysql_skip_name_resolve
   - mysql_slow_query_log
   - mysql_slow_query_log_file
   - mysql_socket
   - mysql_sort_buffer_size
   - mysql_sql_mode
-  - mysql_symbolic-links
+  - mysql_symbolic_links
   - mysql_sync_binlog
   - mysql_table_open_cache
   - mysql_thread_cache_size
   - mysql_tmpdir
   - mysql_tmp_table_size
-  - mysql_transaction-isolation
+  - mysql_transaction_isolation
   - mysql_user
 
 Dependencies
