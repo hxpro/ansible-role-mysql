@@ -1,38 +1,8 @@
 ---
-- name: Install mysql57-community-release
-  package: name='https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm' state=installed
+- name: Import setup tasks
+  import_tasks: setup.yml
+  tags: setup
 
-- name: Install mysql packages
-  package: name={{ mysql_pkg }} state=installed
-
-- name: Configure mysqld section in my.cnf
-  ini_file:
-    dest: /etc/my.cnf
-    section: mysqld
-    option: "{{ item }}"
-    value: "{{ hostvars[inventory_hostname]['mysql_' + item ] }}"
-    allow_no_value: yes
-  with_items: "{{ mysql_mysqld_vars }}"
-  when: hostvars[inventory_hostname]['mysql_' + item ] is defined
-  notify: restart mysqld
-  register: mycnf
-
-- name: Configure client section in my.cnf
-  ini_file:
-    dest: /etc/my.cnf
-    section: client
-    option: "{{ item }}"
-    value: "{{ hostvars[inventory_hostname]['mysql_' + item ] }}"
-    allow_no_value: yes
-  with_items: "{{ mysql_client_vars }}"
-  when: hostvars[inventory_hostname]['mysql_' + item ] is defined
-
-- name: Verify configuration
-  shell: mysqld --verbose --help 1>/dev/null
-
-- name: Initialize datadir
-  command: mysqld --initialize-insecure --user=mysql
-    creates="{{ mysql_datadir }}/auto.cnf"
-
-- name: Start/enable mysql daemon
-  service: name=mysqld state=started enabled=yes
+- name: Import config tasks
+  import_tasks: config.yml
+  tags: config
