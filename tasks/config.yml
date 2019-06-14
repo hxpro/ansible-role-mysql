@@ -21,12 +21,12 @@
   with_items: "{{ mysql_client_vars }}"
   when: hostvars[inventory_hostname]['mysql_' + item ] is defined
 
-- name: Verify configuration
-  shell: mysqld --verbose --help 1>/dev/null
-
 - name: Initialize datadir
   command: mysqld --initialize-insecure --user=mysql
     creates="{{ mysql_datadir }}/auto.cnf"
+
+- name: Verify configuration
+  shell: mysqld --verbose --help 1>/dev/null
 
 - name: Start/enable mysql daemon
   service: name=mysqld state=started enabled=yes
