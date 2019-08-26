@@ -3,10 +3,6 @@ hxpro.mysql
 
 Install MySQL Server 5.7 Community Edition on CentOS 7
 
-TODO
-----
-http://crashmag.net/change-the-default-mysql-data-directory-with-selinux-enabled
-
 Requirements
 ------------
 

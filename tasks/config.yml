@@ -4,10 +4,10 @@
     dest: /etc/my.cnf
     section: mysqld
     option: "{{ item }}"
-    value: "{{ hostvars[inventory_hostname]['mysql_' + item ] }}"
+    value: "{{ lookup('vars', 'mysql_' + item) }}"
     allow_no_value: yes
   with_items: "{{ mysql_mysqld_vars }}"
-  when: hostvars[inventory_hostname]['mysql_' + item ] is defined
+  when: vars['mysql_' + item ] is defined
   notify: restart mysqld
   register: mycnf
 
@@ -16,10 +16,49 @@
     dest: /etc/my.cnf
     section: client
     option: "{{ item }}"
-    value: "{{ hostvars[inventory_hostname]['mysql_' + item ] }}"
+    value: "{{ lookup('vars', 'mysql_' + item) }}"
     allow_no_value: yes
   with_items: "{{ mysql_client_vars }}"
-  when: hostvars[inventory_hostname]['mysql_' + item ] is defined
+  when: vars['mysql_' + item ] is defined
+
+- name: Create mysql datadir
+  file:
+    path: "{{ mysql_datadir }}"
+    mode: '750'
+    owner: 'mysql'
+    group: 'mysql'
+    state: directory
+
+- name: Create mysql tmpdir
+  file:
+    path: "{{ mysql_tmpdir }}"
+    mode: '755'
+    owner: 'mysql'
+    group: 'mysql'
+    state: directory
+  when: mysql_tmpdir is defined
+
+- name: Set selinux context on datadir
+  sefcontext:
+    target: "{{ mysql_datadir }}(/.*)?"
+    setype: mysqld_db_t
+    state: present
+  when: selinux|bool
+
+- name: Set selinux context on tmpdir if is defined
+  sefcontext:
+    target: "{{ mysql_tmpdir }}(/.*)?"
+    setype: mysqld_db_t
+    state: present
+  when: mysql_tmpdir is defined and selinux|bool
+
+- name: Apply new SELinux file context to datadir
+  command: "restorecon -irv {{ mysql_datadir }}"
+  when: selinux|bool
+
+- name: Apply new SELinux file context to tmpdir
+  command: "restorecon -irv {{ mysql_tmpdir }}"
+  when: mysql_tmpdir is defined and selinux|bool
 
 - name: Initialize datadir
   command: mysqld --initialize-insecure --user=mysql
@@ -29,4 +68,7 @@
   shell: mysqld --verbose --help 1>/dev/null
 
 - name: Start/enable mysql daemon
-  service: name=mysqld state=started enabled=yes
+  service:
+    name: mysqld
+    state: started
+    enabled: yes
