@@ -1,0 +1,5 @@
+---
+mysql_pkg:
+  - mysql-community-server
+  - mysql-community-client
+  - innotop

@@ -1,9 +1,4 @@
 ---
-mysql_pkg:
-  - mysql-community-server
-  - mysql-community-client
-  - MySQL-python
-  - innotop
 mysql_client_vars:
   - socket
 mysql_mysqld_vars:
