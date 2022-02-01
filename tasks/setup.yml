@@ -24,7 +24,7 @@
 
 - name: Add rpm gpg key
   rpm_key:
-    key: https://repo.mysql.com/RPM-GPG-KEY-mysql
+    key: https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
 
 - name: Install mysql57-community-release
   package:
