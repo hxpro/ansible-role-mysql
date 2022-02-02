@@ -6,6 +6,7 @@
     option: "{{ item }}"
     value: "{{ lookup('vars', 'mysql_' + item) }}"
     allow_no_value: yes
+    create: False
   with_items: "{{ mysql_mysqld_vars }}"
   when: vars['mysql_' + item ] is defined
   notify: restart mysqld
@@ -18,13 +19,14 @@
     option: "{{ item }}"
     value: "{{ lookup('vars', 'mysql_' + item) }}"
     allow_no_value: yes
+    create: False
   with_items: "{{ mysql_client_vars }}"
   when: vars['mysql_' + item ] is defined
 
 - name: Create mysql datadir
   file:
     path: "{{ mysql_datadir }}"
-    mode: '750'
+    mode: '0750'
     owner: 'mysql'
     group: 'mysql'
     state: directory
@@ -32,7 +34,7 @@
 - name: Create mysql tmpdir
   file:
     path: "{{ mysql_tmpdir }}"
-    mode: '755'
+    mode: '0755'
     owner: 'mysql'
     group: 'mysql'
     state: directory
@@ -53,7 +55,8 @@
   when: mysql_tmpdir is defined and selinux|bool
 
 - name: Apply new SELinux file context to datadir
-  command: "restorecon -irv {{ mysql_datadir }}"
+  command:
+    cmd: "restorecon -irv {{ mysql_datadir }}"
   when: selinux|bool
 
 - name: Apply new SELinux file context to tmpdir
@@ -61,8 +64,9 @@
   when: mysql_tmpdir is defined and selinux|bool
 
 - name: Initialize datadir
-  command: mysqld --initialize-insecure --user=mysql
-    creates="{{ mysql_datadir }}/auto.cnf"
+  command:
+    cmd: mysqld --initialize-insecure --user=mysql
+    creates: "{{ mysql_datadir }}/auto.cnf"
 
 - name: Verify configuration
   shell: mysqld --verbose --help 1>/dev/null

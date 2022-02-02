@@ -1,5 +1,6 @@
 galaxy_info:
   author: Matěj Koudelka
+  role_name: mysql
   description: Install MySQL 5.7 Community Edition
 
   license: license (WTFPL)
