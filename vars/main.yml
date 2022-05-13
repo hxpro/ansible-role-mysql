@@ -25,7 +25,6 @@ mysql_mysqld_vars:
   - long_query_time
   - low_priority_updates
   - max_allowed_packet
-  - max_allowed_packet
   - max_connections
   - max_heap_table_size
   - myisam_sort_buffer_size
