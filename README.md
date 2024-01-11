@@ -1,7 +1,8 @@
 hxpro.mysql
 ===========
 
-Install MySQL Server 5.7 Community Edition on CentOS 7 or CentOS 8 Stream
+Install
+ - MySQL Server 8.0 Community Edition on CentOS 7 / 9 Stream
 
 Requirements
 ------------

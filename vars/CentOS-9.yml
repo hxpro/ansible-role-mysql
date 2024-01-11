@@ -1,0 +1,8 @@
+---
+mysql_release_url: "https://repo.mysql.com/mysql80-community-release-el9-4.noarch.rpm"
+mysql_release_checksum: "md5:9899e99d4b6680f344035f4939fbfb47"
+mysql_pkg:
+  - mysql-community-server
+  - mysql-community-client
+#  - python3-mysql
+#  - innotop

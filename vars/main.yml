@@ -4,24 +4,23 @@ mysql_client_vars:
 mysql_mysqld_vars:
   - bind_address
   - binlog_cache_size
-  - binlog_format
   - concurrent_insert
   - datadir
   - enforce_gtid_consistency
-  - expire_logs_days
+  - binlog_expire_logs_seconds
   - gtid_mode
   - innodb_buffer_pool_size
   - innodb_file_per_table
   - innodb_flush_log_at_trx_commit
   - innodb_flush_method
   - innodb_force_recovery
-  - innodb_log_file_size
+  - innodb_redo_log_capacity
   - innodb_thread_concurrency
   - join_buffer_size
   - key_buffer_size
   - log_bin
   - log_error
-  - log_slave_updates
+  - log_replica_updates
   - long_query_time
   - low_priority_updates
   - max_allowed_packet
@@ -29,13 +28,9 @@ mysql_mysqld_vars:
   - max_heap_table_size
   - myisam_sort_buffer_size
   - net_write_timeout
-  - old_passwords
   - open_files_limit
   - pid_file
   - port
-  - query_cache_limit
-  - query_cache_size
-  - query_cache_type
   - read_buffer_size
   - read_rnd_buffer_size
   - server_id

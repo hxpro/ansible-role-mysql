@@ -26,9 +26,20 @@
   rpm_key:
     key: https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
 
-- name: Install mysql57-community-release
+- name: Download mysql-community-release
+  get_url:
+    url: "{{ mysql_release_url }}"
+    dest: "/usr/local/src/"
+    checksum: "{{ mysql_release_checksum }}"
+  register: _release_rpm_file
+
+- name: Debug
+  debug:
+    var: _release_rpm_file
+
+- name: Install mysql-community-release
   package:
-    name: 'https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm'
+    name: "{{ _release_rpm_file.dest }}"
     state: present
 
 - name: Install mysql packages

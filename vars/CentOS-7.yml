@@ -1,4 +1,6 @@
 ---
+mysql_release_url: "https://repo.mysql.com/mysql80-community-release-el7-11.noarch.rpm"
+mysql_release_checksum: "md5:42048ccae58835e40e37b68a3f8b91fb"
 mysql_pkg:
   - mysql-community-server
   - mysql-community-client
