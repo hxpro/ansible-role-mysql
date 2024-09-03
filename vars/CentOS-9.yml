@@ -4,5 +4,5 @@ mysql_release_checksum: "md5:4fa11545b76db63df0efe852e28c4d6b"
 mysql_pkg:
   - mysql-community-server
   - mysql-community-client
-#  - python3-mysql
+  - python3-mysqlclient
 #  - innotop
