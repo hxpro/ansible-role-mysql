@@ -9,6 +9,7 @@ mysql_mysqld_vars:
   - enforce_gtid_consistency
   - binlog_expire_logs_seconds
   - gtid_mode
+  - innodb_adaptive_hash_index
   - innodb_buffer_pool_size
   - innodb_file_per_table
   - innodb_flush_log_at_trx_commit
@@ -44,6 +45,7 @@ mysql_mysqld_vars:
   - symbolic_links
   - sync_binlog
   - table_open_cache
+  - temptable_use_mmap
   - thread_cache_size
   - tmpdir
   - tmp_table_size
