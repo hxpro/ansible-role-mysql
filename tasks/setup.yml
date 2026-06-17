@@ -24,7 +24,7 @@
 
 - name: Add rpm gpg key
   rpm_key:
-    key: https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+    key: https://repo.mysql.com/RPM-GPG-KEY-mysql-2025
 
 - name: Download mysql-community-release
   get_url:
@@ -41,6 +41,14 @@
   package:
     name: "{{ _release_rpm_file.dest }}"
     state: present
+
+- name: Disable mysql-9.7-lts repo
+  command:
+    cmd: "dnf config-manager --disable mysql-9.7-lts-community"
+
+- name: Enable mysql-8.4-lts repo
+  command:
+    cmd: "dnf config-manager --enable mysql-8.4-lts-community"
 
 - name: Install mysql packages
   package:
